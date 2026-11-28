@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - SocialPulse</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ========== TOP BAR (same on every page after login) ========== -->
+    <header class="app-header">
+        <div class="logo">SocialPulse</div>
+
+        <nav class="app-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="connect.html">Connect Data</a>
+            <a href="analytics.html">Analytics</a>
+            <a href="recommendations.html">Recommendations</a>
+            <a href="reports.html" class="active">Reports</a>
+            <a href="admin.html">Admin</a>
+        </nav>
+
+        <div class="app-user">
+            <span id="userName"></span>
+            <button type="button" id="logoutBtn" class="btn btn-outline small-btn">Logout</button>
+        </div>
+    </header>
+
+    <main class="page">
+        <h1 class="page-title">Reports</h1>
+        <p class="page-sub">Pick a report, generate it, then export it.</p>
+
+        <div class="toolbar no-print">
+            <label for="reportType">Report:</label>
+            <select id="reportType">
+                <option value="summary">Performance summary</option>
+                <option value="posts">Top posts</option>
+                <option value="hashtags">Hashtag report</option>
+            </select>
+
+            <label for="reportPeriod">Period:</label>
+            <select id="reportPeriod">
+                <option value="7">Last 7 days</option>
+                <option value="30" selected>Last 30 days</option>
+                <option value="90">Last 90 days</option>
+            </select>
+
+            <button type="button" id="generateBtn" class="btn btn-primary small-btn">Generate report</button>
+        </div>
+
+        <div class="card">
+            <h3 id="reportTitle">No report yet</h3>
+            <p id="reportEmpty" class="empty-state">Choose a report and click "Generate report".</p>
+
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead id="reportHead"></thead>
+                    <tbody id="reportBody"></tbody>
+                </table>
+            </div>
+
+            <div class="button-row no-print" id="exportButtons" style="display:none;">
+                <button type="button" id="csvBtn" class="btn btn-outline small-btn">Export CSV</button>
+                <button type="button" id="excelBtn" class="btn btn-outline small-btn">Export Excel</button>
+                <button type="button" id="pdfBtn" class="btn btn-outline small-btn">Export PDF</button>
+            </div>
+            <p id="exportMessage" class="message-box no-print"></p>
+        </div>
+    </main>
+
+    <!-- common.js = login check + logout button (runs on every page) -->
+    <script src="js/common.js"></script>
+    <script src="js/reports.js"></script>
+</body>
+</html>
